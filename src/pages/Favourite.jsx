@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import FavouriteCard from '../components/FavouriteCard';
 import { useSelector } from 'react-redux';
+import Loader from '../components/Loader';
 
 const Favourite = () => {
   let [totalFavourite, setTotalFavourite] = useState(0);
@@ -19,7 +20,9 @@ const Favourite = () => {
       {favourite.length > 0 ? (
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {favourite.map((recipe) => (
-            <FavouriteCard key={recipe.id} recipe={recipe} />
+            <Link to={`/recipe-item/${recipe?.id}`}>
+              <FavouriteCard key={recipe.id} recipe={recipe} />
+            </Link>
           ))}
         </ul>
       ) : (
