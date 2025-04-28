@@ -13,6 +13,7 @@ const Home = ({ searchQuery }) => {
     try {
       const response = await axios.get(
         `https://forkify-api.herokuapp.com/api/v2/recipes?search=${keyword}&key=${YOUR_KEY}`
+        //get your API_KEY from 'https://forkify-api.herokuapp.com/'
       );
       setRecipes(response.data.data.recipes || []);
     } catch (err) {
