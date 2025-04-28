@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Loader from '../components/Loader';
 import RecipeCard from '../components/RecipeCard';
-import { Link } from 'react-router-dom';
 
 const Home = ({ searchQuery }) => {
   let [recipes, setRecipes] = useState([]);
@@ -14,6 +13,7 @@ const Home = ({ searchQuery }) => {
     try {
       const response = await axios.get(
         `https://forkify-api.herokuapp.com/api/v2/recipes?search=${keyword}&key=ef2ae381-fa39-4fff-9564-fd2730a1ead0`
+        //get your API_KEY from 'https://forkify-api.herokuapp.com/'
       );
       setRecipes(response.data.data.recipes || []);
       console.log(response.data);

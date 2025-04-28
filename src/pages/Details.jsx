@@ -2,30 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Loader from '../components/Loader';
-import { Star } from 'lucide-react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  addToFavourite,
-  removeFromFavourite,
-} from '../store/slice/favourite-slice';
 
 const Details = () => {
   const { id } = useParams();
   const [details, setDetails] = useState('');
   const [loading, isLoading] = useState(false);
-
-  const dispatch = useDispatch();
-  const favourite = useSelector((state) => state.favourite);
-
-  const isFavourite = favourite.some((item) => item.id === details.id);
-
-  const handleAddToFavourite = () => {
-    dispatch(addToFavourite(details));
-  };
-
-  const handleRemoveFromFavourite = () => {
-    dispatch(removeFromFavourite(details));
-  };
 
   const fetchDetails = async () => {
     isLoading(true);
@@ -44,7 +25,7 @@ const Details = () => {
 
   useEffect(() => {
     fetchDetails();
-  }, []);
+  });
 
   return (
     <div className="container mx-auto p-4">
