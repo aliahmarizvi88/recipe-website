@@ -12,7 +12,7 @@ const Details = () => {
     isLoading(true);
     try {
       const response = await axios.get(
-        `https://forkify-api.herokuapp.com/api/v2/recipes/${id}?key=ef2ae381-fa39-4fff-9564-fd2730a1ead0`
+        `https://forkify-api.herokuapp.com/api/v2/recipes/${id}?key=${YOUR_API_KEY}`
       );
       setDetails(response.data.data.recipe);
       console.log(response.data.data.recipe);
